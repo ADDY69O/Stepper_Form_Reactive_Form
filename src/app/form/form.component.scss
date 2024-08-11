@@ -1,0 +1,178 @@
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 8vh);
+    font-family: "Montserrat", sans-serif;
+    padding: 10px; // added padding for small screens
+
+    .pages {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+      flex-wrap: wrap; // allows the pages to wrap in smaller screens
+
+      .pages__text {
+        font-weight: 300;
+        font-size: 22px;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .page {
+        width: 22px;
+        height: 22px;
+        font-size: 19px;
+        border-radius: 50%;
+        color: black;
+        background-color: white;
+        border: 2px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+          background-color: #e0e0e0;
+        }
+
+        &.active {
+          background-color: #1e64d4;
+          color: white;
+          border: none;
+        }
+
+        &.active__prev {
+          background-color: #1e64d4;
+          color: white;
+          border: none;
+        }
+      }
+    }
+
+    .form {
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      max-width: 800px;
+      height: auto;
+      justify-content: center;
+      border: 2px solid black;
+      padding: 20px;
+      border-radius: 27px;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      .showDetails {
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+        h3 {
+          font-size: 22px;
+          color: #333;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap; // allows buttons to wrap in smaller screens
+        gap: 10px;
+
+        button {
+          width: 100%;
+          max-width: 200px;
+          padding: 10px 20px;
+          border-radius: 12px;
+          border: none;
+          color: white;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background-color 0.3s;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+
+        .prev {
+          background-color: #0b57d0;
+        }
+
+        .next {
+          background-color: #f0483e;
+        }
+
+        .submit {
+          width: 100%;
+          max-width: 200px;
+          background-color: #248c46;
+        }
+      }
+    }
+  }
+
+  .ChangeSinglePage{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    button{
+      cursor: pointer;
+      border-radius: 12px;
+      border:none;
+      width: 100%;
+      max-width: 200px;
+      color: white;
+      background-color: #1E64D4;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .pages__text {
+      font-size: 18px; 
+    }
+
+    .form {
+      padding: 20px; 
+    }
+
+    .buttons button {
+      width: 100%; 
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pages__text {
+      font-size: 16px; 
+    }
+
+    .form {
+      padding: 5px;
+    }
+
+    .buttons button {
+      width: 100%;
+      font-size: 10px;
+    }
+  }

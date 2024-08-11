@@ -1,0 +1,14 @@
+
+.result-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 24px;
+    color: #333; 
+    background-color: #f9f9f9; 
+    margin: 0;
+    text-align: center;
+  }
+  

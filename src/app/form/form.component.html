@@ -1,0 +1,48 @@
+<div class="main">
+    <div class="pages">
+      <ng-container *ngFor="let singlePage of stepperPages">
+        <div class="header">
+          <p class="page" [ngClass]="{'active': selected == singlePage.page}" [ngClass]="{'active__prev': selected > singlePage.page}"
+            (click)="selected = singlePage.page" [class.active]="selected == singlePage.page">{{ singlePage.page }}</p>
+          <h1 class="pages__text">{{ singlePage.title }}</h1>
+        </div>
+      </ng-container>
+    </div>
+    <div class="form">
+      <div class="showDetails" [ngSwitch]="selected">
+        <div *ngSwitchCase="1">
+          <app-basic-details></app-basic-details>
+        </div>
+        <div *ngSwitchCase="2">
+          <app-family-details></app-family-details>
+        </div>
+        <div *ngSwitchCase="3">
+          <app-creative></app-creative>
+        </div>
+        <div *ngSwitchCase="4">
+          <app-address></app-address>
+        </div>
+        <div *ngSwitchCase="5">
+          <ng-container *ngFor="let page of stepperPages">
+            <div *ngIf="page.page !== stepperPages.length" class="ChangeSinglePage">
+              <h1>{{ page.title }}</h1>
+              <button (click)="changePage(page.page)">Change</button>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="buttons">
+     
+        <ng-container *ngIf="selected < stepperPages.length">
+          <button *ngIf= "!stepperPages[selected - 1].editable && selected > 1" class="prev" (click)=" selected =  selected - 1">Prev</button>
+          <button *ngIf="!stepperPages[selected - 1].editable" class="next" (click)="handleNextPage()">Next</button>
+        </ng-container>
+  
+        <ng-container *ngIf="selected === stepperPages.length">
+          <button  class="submit" (click)="handleFormSubmit()">Submit</button>
+        </ng-container>
+        <button *ngIf="stepperPages[selected - 1].editable" class="submit" (click)="handleFormSubmit()">Submit</button>
+    </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,58 @@
+<div class="address-form">
+  <p>Address Works!</p>
+  <form [formGroup]="addressForm" (ngSubmit)="validateAddress()">
+    <div>
+      <label for="country">Country</label>
+      <input
+        type="text"
+        id="country"
+        formControlName="country"
+        placeholder="Enter country..."
+      />
+      <div *ngIf="addressForm.get('country').invalid && addressForm.get('country').touched" class="error">
+        Country is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="state">State</label>
+      <input
+        type="text"
+        id="state"
+        formControlName="state"
+        placeholder="Enter state..."
+      />
+      <div *ngIf="addressForm.get('state').invalid && addressForm.get('state').touched" class="error">
+        State is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="city">City</label>
+      <input
+        type="text"
+        id="city"
+        formControlName="city"
+        placeholder="Enter city..."
+      />
+      <div *ngIf="addressForm.get('city').invalid && addressForm.get('city').touched" class="error">
+        City is required.
+      </div>
+    </div>
+
+    <input
+      type="text"
+      formControlName="inputSearch"
+      id="inputSearch"
+      (input)="handleInputChange()"
+      placeholder="Enter address..."
+    />
+    <div class="searchComplete" *ngIf="autoComplete.length > 0">
+      <ng-container *ngFor="let address of autoComplete">
+        <p class="place" (click)="selectAddress(address)">{{ address.description }}</p>
+      </ng-container>
+    </div>
+
+   
+  </form>
+</div>

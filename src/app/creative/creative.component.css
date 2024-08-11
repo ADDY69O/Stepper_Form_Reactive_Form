@@ -1,0 +1,91 @@
+.Main__Creative {
+    overflow-y: scroll;
+    height: 300px;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .name {
+    font-size: 17px;
+  }
+  
+  .input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .title {
+    font-weight: 100;
+    font-size: 17px;
+  }
+  
+  .oneMember {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  .title__name {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h1 {
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 25px;
+  }
+  
+  p {
+    font-size: 19px;
+    font-weight: 100;
+  }
+  
+  .relation {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  label {
+    background-color: #7e57c2;
+    color: white;
+    height: max-content;
+    font-size: 18px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  input {
+    visibility: hidden;
+  }
+  
+  .uploaded-file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .file-name {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  .remove-button {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
