@@ -14,7 +14,7 @@ export class FormDataService {
       { Fname: "", Lname: "", Phone: null, dob: "", relation: "" }
     ],
     creative: [
-      { firstName: "", image: "" } // Adjusted to match with CreativeComponent
+       // Adjusted to match with CreativeComponent
     ],
     address: { city: "", state: "", country: "" }
   };
@@ -38,13 +38,13 @@ export class FormDataService {
     console.log(this.data.familyDetails);
   }
 
-  addCreativePicture(name: string, file: File) {
+  addCreativePicture(name: string, file: File,fileName:string) {
     const imageUrl = URL.createObjectURL(file);
     const index = this.data.creative.findIndex(c => c.firstName === name);
     if (index > -1) {
-      this.data.creative[index] = { firstName: name, image: imageUrl };
+      this.data.creative[index] = { firstName: name, image: imageUrl,imageFileName:fileName };
     } else {
-      this.data.creative.push({ firstName: name, image: imageUrl });
+      this.data.creative.push({ firstName: name, image: imageUrl,imageFileName:fileName });
     }
     console.log(this.data.creative)
   }

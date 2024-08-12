@@ -1,29 +1,28 @@
 <div class="Main__Family" [formGroup]="familyForm">
-  <ng-container formArrayName="familyMembers" *ngFor="let member of familyMembers.controls; let i = index">
-    <ng-template #showRemoveButton>
-      <button class="remove" (click)="removeFamilyMember(i)">Remove</button>
-    </ng-template>
+  <ng-container formArrayName="familyMembers">
+    <ng-container *ngFor="let member of familyMembers.controls; let i = index">
+      <ng-template #showRemoveButton>
+        <button class="remove" (click)="removeFamilyMember(i)">Remove</button>
+      </ng-template>
 
-    <app-common
-      [member]="member.value"
-      [memberIndex]="i"
-      (sendCommonData)="updateFamilyMemberData(i, $event)"
-    ></app-common>
+      <app-common
+        [member]="member.value"
+        [memberIndex]="i"
+        (sendCommonData)="updateFamilyMemberData(i, $event)"
+      ></app-common>
 
-    <div [formGroupName]="i">
-      <label for="relation">Relation</label>
-      <input
-        type="text"
-        name="relation"
-        formControlName="relation"
-        required
-      />
-      <div *ngIf="member.get('relation').invalid && (member.get('relation').dirty || member.get('relation').touched)" class="error">
-        Relation is required.
+      <div [formGroupName]="i">
+        <app-common-input
+          label="Relation *"
+          placeholder="Enter Relation."
+          [control]="getFormControl(i, 'relation')"
+          requiredMessage="* Relation is required"
+          type="text"
+        ></app-common-input>
       </div>
-    </div>
 
-    <div *ngIf="familyMembers.length > 1; then showRemoveButton"></div>
+      <div *ngIf="familyMembers.length > 1; then showRemoveButton"></div>
+    </ng-container>
   </ng-container>
   <button class="add" (click)="addFamilyMember()">Add</button>
 </div>

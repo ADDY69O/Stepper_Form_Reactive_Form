@@ -1,24 +1,31 @@
-<app-common></app-common>
-<div class="basic">
-    <form [formGroup]="basicForm" (ngSubmit)="handleBasicForm()">    
-        <div class="input_inline_single">
-            <p>Email :</p>
-            <div class="input_inline_error">
-                <input type="email" formControlName="Email" placeholder="Enter Email">
-                <small *ngIf="basicForm.get('Email')?.touched && basicForm.get('Email')?.invalid">* Email is Required</small>
-                <small *ngIf="basicForm.get('Email')?.errors?.['pattern']">Invalid Email</small>
-            </div>
-        </div>
-        
-        <div class="input_inline_single">
-            <p>Website :</p>
-            <div class="input_inline_error">
-                <input type="text" formControlName="Website" placeholder="Enter Website URL">
-                <small *ngIf="basicForm.get('Website')?.touched && basicForm.get('Website')?.invalid">* Website is Required</small>
-                <small *ngIf="basicForm.get('Website')?.errors?.['pattern']">Invalid Website</small>
-            </div>
-        </div>
+<ng-container [formGroup]="basicForm" >
+    <app-common></app-common>
 
+
+    <div class="basic">
+        <form (ngSubmit)="handleBasicForm()">    
+          
+        <app-common-input
+        label="Email *"
+        placeholder="Enter Email"
+        [control]="getFormControl('Email')"
+        type="email"
+        requiredMessage="* Email is required"
+
+      ></app-common-input>
+            
+            <app-common-input
+            label="Website *"
+            placeholder="Enter Website Url"
+            [control]="getFormControl('Website')"
+            type="text"
+            requiredMessage="* Website is Required"
+          
+          ></app-common-input>
     
-    </form>
-</div>
+        
+        </form>
+    </div>
+
+</ng-container>
+

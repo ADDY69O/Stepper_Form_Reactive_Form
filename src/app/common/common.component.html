@@ -1,37 +1,35 @@
 <div>
-    <form [formGroup]="commonForm" (ngSubmit)="handleCommonForm()">
-      <div class="input_inline_single">
-        <h1>FirstName :</h1>
-        <div class="input_inline_error">
-          <input type="text" formControlName="Fname" placeholder="First Name">
-          <small *ngIf="commonForm.get('Fname')?.touched && commonForm.get('Fname')?.invalid">* Fname is Required</small>
-          <small *ngIf="commonForm.get('Fname')?.errors?.['minlength']">Minimum 6 Length required for FirstName</small>
-        </div>
-      </div>
-  
-      <div class="input_inline_single">
-        <h1>LastName :</h1>
-        <input type="text" formControlName="Lname" placeholder="Last Name">
-      </div>
-  
-      <div class="input_inline_single">
-        <h1>Phone No.</h1>
-        <div class="input_inline_error">
-          <input type="text" formControlName="Phone" placeholder="Enter Phone No.">
-          <small *ngIf="commonForm.get('Phone')?.touched && commonForm.get('Phone')?.invalid">* Phone No is Required</small>
-          <small *ngIf="commonForm.get('Phone')?.errors?.['minlength'] || commonForm.get('Phone')?.errors?.['maxlength']">10 digit is Required</small>
-        </div>
-      </div>
-  
-      <div class="input_inline_single">
-        <h1>D.O.B</h1>
-        <div class="input_inline_error">
-          <input type="date" formControlName="dob">
-          <small *ngIf="commonForm.get('dob')?.touched && commonForm.get('dob')?.invalid">* Date of Birth is Required</small>
-        </div>
-      </div>
-  
-    
-    </form>
-  </div>
-  
+  <form [formGroup]="commonForm" (ngSubmit)="handleCommonForm()">
+    <app-common-input
+      label="First Name*"
+      placeholder="First Name"
+      [control]="getFormControl('Fname')"
+      requiredMessage="* Fname is required"
+      minlengthMessage="Minimum 6 characters required"
+    ></app-common-input>
+
+    <app-common-input
+      label="Last Name*"
+      placeholder="Last Name"
+      [control]="getFormControl('Lname')"
+    ></app-common-input>
+
+    <app-common-input
+      label="Phone No*"
+      placeholder="Enter Phone No."
+      [control]="getFormControl('Phone')"
+      requiredMessage="* Phone No is required"
+      minlengthMessage="Phone number must be 10 digits"
+      maxlengthMessage="Phone number must be 10 digits"
+    ></app-common-input>
+
+    <app-common-input
+      label="D.O.B"
+      type="date"
+      [control]="getFormControl('dob')"
+      requiredMessage="* Date of Birth is required"
+    ></app-common-input>
+
+   
+  </form>
+</div>

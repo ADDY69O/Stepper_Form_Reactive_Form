@@ -8,7 +8,7 @@
           <p class="relation">{{member.Fname}} {{member.Lname}}</p>
         </span>
         <div class="input" *ngIf="!getUploadedFile(member.Fname)">
-          <label [for]="member.Fname">Upload</label>
+          <label [for]="member.Fname">Upload photo</label>
           <input
             type="file"
             [name]="member.Fname"
@@ -20,9 +20,12 @@
           </div>
         </div>
         <ng-container *ngIf="getUploadedFile(member.Fname)">
-          <div class="uploaded-file">
-            <p class="file-name">{{ getUploadedFile(member.Fname)?.name }}</p>
-            <button class="remove-button" (click)="removePhoto(member.Fname)">Remove</button>
+          <div class="family__upload">
+            <img class="familyImage" src={{getUploadedFile(member.Fname)?.image}} alt="">
+            <div class="uploaded-file">
+              <p class="file-name">{{ getUploadedFile(member.Fname)?.imageFileName }}</p>
+              <button class="remove-button" (click)="removePhoto(member.Fname)">Remove</button>
+            </div>
           </div>
         </ng-container>
       </div>

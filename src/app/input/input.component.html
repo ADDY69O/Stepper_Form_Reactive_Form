@@ -1,0 +1,18 @@
+<div class="input-inline-single">
+  <h1>{{ label }}</h1>
+  <div class="input-inline-error">
+    <input
+      [type]="type"
+      [formControl]="control"
+      [placeholder]="placeholder"
+      [attr.required]="control.validator?.['required'] ? true : null"
+      [attr.minlength]="control.validator?.['minlength']?.requiredLength || null"
+      [attr.maxlength]="control.validator?.['maxlength']?.requiredLength || null"
+      
+    />
+    <small *ngIf="control.touched && control.errors?.['required']">{{ requiredMessage }}</small>
+    <small *ngIf="control.errors?.['minlength']">{{ minlengthMessage }}</small>
+    <small *ngIf="control.errors?.['maxlength']">{{ maxlengthMessage }}</small>
+    <small *ngIf="control.errors?.['pattern']">Invalid {{label}}</small>
+  </div>
+</div>

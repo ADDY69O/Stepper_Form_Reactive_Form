@@ -40,10 +40,7 @@ export class AddressComponent implements OnInit {
 
   validateAddress() {
     if (this.addressForm.invalid) {
-      Object.keys(this.addressForm.controls).forEach(field => {
-        const control = this.addressForm.get(field);
-        control.markAsTouched({ onlySelf: true });
-      });
+    this.addressForm.markAllAsTouched(); 
       return false;
     } else {
       this.formService.addAddress(

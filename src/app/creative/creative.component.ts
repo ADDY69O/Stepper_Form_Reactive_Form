@@ -39,9 +39,10 @@ export class CreativeComponent implements OnInit {
 
   addPhoto(name: string, event: any) {
     const file = (event.target as HTMLInputElement).files?.[0];
+    console.log(file);
     if (file) {
       console.log('Uploading file:', file);
-      this.formDataService.addCreativePicture(name, file);
+      this.formDataService.addCreativePicture(name, file,file.name);
       this.creative = this.formDataService.getCreativePictures(); // Refresh creative array from service
       this.creativeForm.get(['photos', name]).setValue(file);
     }
@@ -49,7 +50,7 @@ export class CreativeComponent implements OnInit {
 
   getUploadedFile(name: string) {
     console.log(this.creative);
-    const data = this.creative.find((c) => c.firstName === name)?.image || null;
+    const data = this.creative.find((c) => c.firstName === name) || null;
     console.log(data);
     return data;
   }

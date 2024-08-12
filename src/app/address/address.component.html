@@ -8,6 +8,7 @@
         id="country"
         formControlName="country"
         placeholder="Enter country..."
+    
       />
       <div *ngIf="addressForm.get('country').invalid && addressForm.get('country').touched" class="error">
         Country is required.
@@ -21,6 +22,7 @@
         id="state"
         formControlName="state"
         placeholder="Enter state..."
+       
       />
       <div *ngIf="addressForm.get('state').invalid && addressForm.get('state').touched" class="error">
         State is required.
@@ -34,6 +36,7 @@
         id="city"
         formControlName="city"
         placeholder="Enter city..."
+   
       />
       <div *ngIf="addressForm.get('city').invalid && addressForm.get('city').touched" class="error">
         City is required.

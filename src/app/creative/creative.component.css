@@ -8,7 +8,17 @@
   .name {
     font-size: 17px;
   }
+
+  .family__upload{
+    display: flex;
+    gap: 20px;
+  }
   
+  .familyImage{
+    width: 100px;
+    height: 100px;
+  }
+
   .input {
     display: flex;
     flex-direction: column;

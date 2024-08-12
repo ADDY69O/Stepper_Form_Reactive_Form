@@ -1,20 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { Form, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Form, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { FormDataService } from '../form-data.service';
 import { CommonComponent } from '../common/common.component';
+import { InputComponent } from '../input/input.component';
 
 
 @Component({
   selector: 'app-basic-details',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, CommonComponent],
+  imports: [ReactiveFormsModule, CommonModule, CommonComponent,InputComponent],
   templateUrl: './basic-details.component.html',
   styleUrl: './basic-details.component.css'
 })
 export class BasicDetailsComponent {
   basicForm: FormGroup;
+
+ 
 
   constructor(private formService: FormDataService, private fb: FormBuilder) {}
 
@@ -31,6 +34,9 @@ export class BasicDetailsComponent {
     });
   }
 
+  getFormControl(controlName: string): FormControl {
+    return this.basicForm.get(controlName) as FormControl;
+  }
   checkisValid() {
     return this.basicForm.valid && this.commonComponent.checkisValid();
   }

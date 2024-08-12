@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormDataService } from '../form-data.service';
-import { FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { InputComponent } from '../input/input.component';
 
 @Component({
   selector: 'app-common',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, InputComponent],
   templateUrl: './common.component.html',
   styleUrls: ['./common.component.css']
 })
@@ -17,9 +18,7 @@ export class CommonComponent {
   @Input() memberIndex: number;
   @Output() sendCommonData: EventEmitter<any> = new EventEmitter();
 
-
   constructor(private formService: FormDataService, private fb: FormBuilder) {}
-
 
   ngOnInit() {
     const commonData = this.member || this.formService.data.common;
@@ -35,6 +34,9 @@ export class CommonComponent {
   checkisValid() {
     return this.commonForm.valid;
   }
+  getFormControl(controlName: string): FormControl {
+    return this.commonForm.get(controlName) as FormControl;
+  }
 
   handleCommonForm() {
     if (this.commonForm.valid) {
@@ -48,7 +50,7 @@ export class CommonComponent {
 
   handleCommonFamilyForm() {
     if (this.checkisValid()) {
-      console.log(this.commonForm.value + ' within Common Module');
+      console.log(this.commonForm + ' within Common Module');
       this.sendCommonData.emit(this.commonForm.value);
     } else {
       this.commonForm.markAllAsTouched();
